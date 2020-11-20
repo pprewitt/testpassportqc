@@ -3,12 +3,13 @@ import { Route, Redirect } from "react-router-dom";
 
 
 const SecuredRoute = (props) => {
-  const { component: Component, path, user } = props;
+  
+  const { component: Component, path, loggedIn  } = props;
   return (
     <Route
       path={path}
       render={() => {
-        if (!user) {
+        if (loggedIn) {
           return<Redirect to="/signin" />;
           
         }

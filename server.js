@@ -79,6 +79,16 @@ app.post("/register", (req, res) => {
 app.get("/user", (req, res) => {
   res.send(req.user); // The req.user stores the entire user that has been authenticated inside of it.
 });
+
+app.post('/logout',(req, res) =>{
+  if(req.user){
+    req.logout()
+    res.send({msg:'logging out'})
+  } else {
+    res.send({msg: 'no user to log out'})
+  }
+})
+
 //----------------------------------------- END OF ROUTES---------------------------------------------------
 //Start Server
 app.listen(PORT, () => {
