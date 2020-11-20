@@ -10,7 +10,7 @@ function SignInCard(){
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
 
-  const [data, setData] = useState(null);
+  const [user, setUser] = useState(false);
 
   const login = () => {
     Axios({
@@ -21,19 +21,23 @@ function SignInCard(){
       },
       withCredentials: true,
       url: "http://localhost:4000/login",
-    }).then((res) => console.log(res));
-  };
-
-  const getUser = () => {
-    Axios({
-      method: "GET",
-      withCredentials: true,
-      url: "http://localhost:4000/user",
     }).then((res) => {
-      setData(res.data);
-      console.log(res.data);
-    });
-  };
+      if (res.status===200){
+        setUser(true)
+        window.location.href = `/`
+      };
+  });
+  }
+  // const getUser = () => {
+  //   Axios({
+  //     method: "GET",
+  //     withCredentials: true,
+  //     url: "http://localhost:4000/user",
+  //   }).then((res) => {
+  //     setData(res.data);
+  //     console.log(res.data);
+  //   });
+  // };
     return( <div style={{display:"flex", flexDirection:"column", alignItems: "center", justifyContent: "center", marginTop: "10%"}}> <Card
         bg="secondary"
         text='white'

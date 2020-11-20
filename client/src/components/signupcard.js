@@ -39,19 +39,19 @@ function SignUpCard() {
         <InputGroup size="sm" className="mb-3">
           <InputGroup.Prepend>
             <InputGroup.Text id="username" placeholder="username"
-              onChange={(e) => setRegisterUsername(e.target.value)} className="inputGroup-sizing-sm"></InputGroup.Text>
+               className="inputGroup-sizing-sm"></InputGroup.Text>
           </InputGroup.Prepend>
-          <FormControl placeholder="Username" aria-label="Small" aria-describedby="inputGroup-sizing-sm" />
+          <FormControl placeholder="Username" onChange={(e) => setRegisterUsername(e.target.value)} aria-label="Small" aria-describedby="inputGroup-sizing-sm" />
         </InputGroup>
         <br />
         <InputGroup size="sm" className="mb-3">
           <InputGroup.Prepend>
             <InputGroup.Text id="password" 
-              onChange={(e) => setRegisterPassword(e.target.value)}
+              
 
               className="inputGroup-sizing-sm"></InputGroup.Text>
           </InputGroup.Prepend>
-          <FormControl placeholder="Password" aria-label="Small" aria-describedby="inputGroup-sizing-sm" />
+          <FormControl placeholder="Password" onChange={(e) => setRegisterPassword(e.target.value)} aria-label="Small" aria-describedby="inputGroup-sizing-sm" />
         </InputGroup>
         {/* <Form.Group controlId="exampleForm.ControlSelect1">
           <Form.Label>Choose an Avatar</Form.Label>

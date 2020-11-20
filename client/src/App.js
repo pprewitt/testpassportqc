@@ -7,6 +7,7 @@ import Profile from './pages/profile';
 import NewSnip from './pages/newsnip';
 import NoPage from './pages/nopage';
 import Feed from './pages/feed';
+import SecuredRoute from './components/SecuredRoute';
 
 function App() {
 
@@ -14,9 +15,12 @@ function App() {
         <BrowserRouter>
             <div>
                 <Switch>
-                    <Route exact path="/">
+                    <SecuredRoute exact 
+                    path="/"
+                    component={Profile}
+                    user={user}>
                         <Profile />
-                    </Route>
+                    </SecuredRoute>
                     <Route exact path="/signin">
                         <SignIn />
                     </Route>
