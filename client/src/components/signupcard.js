@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./App.css";
 import Card from 'react-bootstrap/Card';
 import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
@@ -12,11 +11,6 @@ import Axios from "axios";
 function SignUpCard() {
   const [registerUsername, setRegisterUsername] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
-
-
-
-  // const [data, setData] = useState(null);
-
 
   const register = () => {
     Axios({

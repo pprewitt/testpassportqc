@@ -1,14 +1,16 @@
-import React, { useContext } from 'react';
+import React, { useState } from 'react';
 import Card from 'react-bootstrap/Card';
 import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
+import Axios from "axios";
 import { Link } from 'react-router-dom';
-import UserContext from '../../src/utils/UserContext';
 
 function SignInCard(){
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
+
+  const [data, setData] = useState(null);
 
   const login = () => {
     Axios({
