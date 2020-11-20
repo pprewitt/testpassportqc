@@ -7,7 +7,31 @@ import { Link } from 'react-router-dom';
 import UserContext from '../../src/utils/UserContext';
 
 function SignInCard(){
-  const { userData, handleInputChange, handleLogin } = useContext(UserContext);
+  const [loginUsername, setLoginUsername] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+
+  const login = () => {
+    Axios({
+      method: "POST",
+      data: {
+        username: loginUsername,
+        password: loginPassword,
+      },
+      withCredentials: true,
+      url: "http://localhost:4000/login",
+    }).then((res) => console.log(res));
+  };
+
+  const getUser = () => {
+    Axios({
+      method: "GET",
+      withCredentials: true,
+      url: "http://localhost:4000/user",
+    }).then((res) => {
+      setData(res.data);
+      console.log(res.data);
+    });
+  };
     return( <div style={{display:"flex", flexDirection:"column", alignItems: "center", justifyContent: "center", marginTop: "10%"}}> <Card
         bg="secondary"
         text='white'
@@ -17,21 +41,21 @@ function SignInCard(){
         <Card.Header>Quik Code Pro</Card.Header>
         <Card.Body>
         <Card.Title>Sign In</Card.Title>
-          <InputGroup size="sm" className="mb-3">
+        <InputGroup size="sm" className="mb-3">
             <InputGroup.Prepend>
-                <InputGroup.Text id="username" className="inputGroup-sizing-sm" value={userData.username} onChange={handleInputChange} ></InputGroup.Text>
+                <InputGroup.Text id="username" className="inputGroup-sizing-sm"  ></InputGroup.Text>
             </InputGroup.Prepend>
-            <FormControl placeholder ="Username" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value={ userData.password} onChange={handleInputChange}/>
+            <FormControl placeholder ="Username" onChange={(e) => setLoginUsername(e.target.value)} aria-label="Small" aria-describedby="inputGroup-sizing-sm" />
           </InputGroup>
         <br />
-          <InputGroup size="sm" className="mb-3">
+        <InputGroup size="sm" className="mb-3">
             <InputGroup.Prepend>
                 <InputGroup.Text id="password"className="inputGroup-sizing-sm"></InputGroup.Text>
             </InputGroup.Prepend>
-            <FormControl placeholder ="Password"  aria-label="Small" aria-describedby="inputGroup-sizing-sm" />
+            <FormControl placeholder ="Password" onChange={(e) => setLoginPassword(e.target.value)} aria-label="Small" aria-describedby="inputGroup-sizing-sm" />
           </InputGroup>
         <br />
-        <Button onClick={handleLogin} className="info">Submit</Button>
+        <Button onClick={login} className="info">Submit</Button>
         </Card.Body>
       </Card></div>)
 
