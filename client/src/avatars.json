@@ -1,0 +1,107 @@
+[
+{
+    "name":"Plant",
+    "icon":["fas", "seedling"],
+    "size":"7x"
+},
+{
+    "name":"Frog",
+    "icon":"",
+    "size":"7x"
+},
+{
+    "name":"Wizard",
+    "icon":["fas", "hat-wizard"],
+    "size":"7x"
+},
+{
+    "name":"Burger",
+    "icon":["fas", "hamburger"],
+    "size":"7x"
+},
+{
+    "name":"Guitar",
+    "icon":["fas", "guitar"],
+    "size":"7x"
+},
+{
+    "name":"Ghost",
+    "icon":["fas", "ghost"],
+    "size":"7x"
+},
+{
+    "name":"Couch",
+    "icon":["fas","couch"],
+    "size":"7x"
+},
+{
+    "name":"Drumstick",
+    "icon":["fas","drumstick-bite"],
+    "size":"7x"
+},
+{
+    "name":"Bird",
+    "icon":"fasDove",
+    "size":"7x"
+},
+{
+    "name":"Bomb",
+    "icon":"faBomb",
+    "size":"7x"
+},
+{
+    "name":"Apple",
+    "icon":["fas","apple-alt"],
+    "size":"7x"
+},
+{
+    "name":"Injured Person",
+    "icon":["fas","user-injured"],
+    "size":"7x"
+},
+{
+    "name":"Ninja",
+    "icon":["fas","user-ninja"],
+    "size":"7x"
+},
+{
+    "name":"Person",
+    "icon":["fas","user"],
+    "size":"7x"
+},
+{
+    "name":"Tie Person",
+    "icon":["fas","user-tie"],
+    "size":"7x"
+},
+{
+    "name":"Hippo",
+    "icon":["fas","hippo"],
+    "size":"7x"
+},
+{
+    "name":"Dog",
+    "icon":["fas","dog"],
+    "size":"7x"
+},
+{
+    "name":"Home Slice",
+    "icon":["fas","bread-slice"],
+    "size":"7x"
+},
+{
+    "name":"Cat",
+    "icon":["fas","cat"],
+    "large":"7x"
+},
+{
+    "name":"Bug",
+    "small":["fas","bug"],
+    "large": "7x"
+},
+{
+    "name":"Poo",
+    "small":["fas","poo"],
+    "large":"7x"
+}
+]
