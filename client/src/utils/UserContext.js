@@ -1,14 +1,5 @@
 import React from "react";
 
-const UserContext = React.createContext({
-    userData: {},
-    loggedIn: false,
-    user: {},
-    failureMessage: "",
-    handleInputChange: () => {},
-    handleLogin: () => {},
-    handleSignup: () => {},
-    logout: () => {},
-});
+const UserContext = React.createContext();
 
 export default UserContext;

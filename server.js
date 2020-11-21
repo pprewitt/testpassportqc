@@ -47,19 +47,11 @@ require("./passportConfig")(passport);
 //----------------------------------------- END OF MIDDLEWARE---------------------------------------------------
 
 // Routes
-app.post("/login", (req, res, next) => {
-  passport.authenticate("local", (err, user, info) => {
-    if (err) throw err;
-    if (!user) res.send("No User Exists");
-    else {
-      req.logIn(user, (err) => {
-        if (err) throw err;
-        res.send("Successfully Authenticated");
-        console.log(req.user);
-      });
-    }
-  })(req, res, next);
+app.post("/login", passport.authenticate("local"), (req, res) => {
+  const userInfo = {username:req.user.username, loggedIn:true};
+  res.send(userInfo);
 });
+
 app.post("/register", (req, res) => {
   User.findOne({ username: req.body.username }, async (err, doc) => {
     if (err) throw err;
@@ -76,11 +68,22 @@ app.post("/register", (req, res) => {
     }
   });
 });
-app.get("/user", (req, res) => {
-  res.send(req.user); // The req.user stores the entire user that has been authenticated inside of it.
-});
 //----------------------------------------- END OF ROUTES---------------------------------------------------
 //Start Server
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`Server Has Started on ${PORT}`);
 });
+
+function handleShutdownGracefully() {
+  console.info("closing server gracefully...");
+  server.close(() => {
+    console.log("server closed");
+    // close db connections here or
+    // any other clean if required
+    process.exit(0); // if required
+  });
+}
+
+process.on("SIGINT", handleShutdownGracefully);
+process.on("SIGTERM", handleShutdownGracefully);
+process.on("SIGHUP", handleShutdownGracefully);

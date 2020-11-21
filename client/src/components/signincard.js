@@ -1,16 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Card from 'react-bootstrap/Card';
 import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
-import Axios from "axios";
-import { Link } from 'react-router-dom';
+import Axios from 'axios';
+import UserContext from '../utils/UserContext.js';
+import { Redirect, useHistory } from 'react-router-dom';
 
 function SignInCard(){
+  const history = useHistory();
+  const {userContext, setUserContext} = useContext(UserContext);
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
 
-  const [data, setData] = useState(null);
 
   const login = () => {
     Axios({
@@ -21,19 +23,13 @@ function SignInCard(){
       },
       withCredentials: true,
       url: "http://localhost:4000/login",
-    }).then((res) => console.log(res));
-  };
-
-  const getUser = () => {
-    Axios({
-      method: "GET",
-      withCredentials: true,
-      url: "http://localhost:4000/user",
     }).then((res) => {
-      setData(res.data);
-      console.log(res.data);
+      console.log(res);
+      setUserContext(res.data);
+      history.push("/");
     });
   };
+
     return( <div style={{display:"flex", flexDirection:"column", alignItems: "center", justifyContent: "center", marginTop: "10%"}}> <Card
         bg="secondary"
         text='white'
